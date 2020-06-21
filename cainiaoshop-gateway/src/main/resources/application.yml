@@ -1,0 +1,64 @@
+server:
+  port: 88
+spring:
+  application:
+    name: cainiaosop-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        ##测试
+        - id: test_route
+          uri: http://www.baidu.com
+          predicates:
+            - Query=url,baidu
+
+        - id: test_route2
+          uri: http://www.qq.com
+          predicates:
+            - Query=url,qq
+
+        ##,/api:api开头的路由地址     lb:负载均衡
+        - id: third_party
+          uri: lb://cainiaoshop-third-party
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:  ##主要重写路径，api前面的替换，后面的拼接
+            - RewritePath=/api/thirdparty/(?<segment>/?.*), /$\{segment}
+
+        ##,/api:api开头的路由地址     lb:负载均衡
+        - id: product_route
+          uri: lb://cainiaoshop-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+          ##,会员系统
+        - id: member_route
+          uri: lb://cainiaoshop-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+        ##  库存系统
+        - id: ware_route
+          uri: lb://cainiaoshop-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+        ##后台管理系统   api请求开头
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /renren-fast/$\{segment}
+
+
+

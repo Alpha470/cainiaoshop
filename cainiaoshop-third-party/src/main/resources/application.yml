@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: cainiaoshop-third-party
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    alicloud:
+      access-key: LTAI4G8LUsSbgzw5E2funWT3
+      secret-key: arZ8FsCiNFaqGjyIJX4IyhVRtudcoI
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: cainiaoshop-product

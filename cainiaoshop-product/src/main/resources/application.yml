@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    username: root
+    password: GJ670068
+    url: jdbc:mysql://localhost:3306/cainiaoshop_pms
+    type: com.mysql.cj.jdbc.MysqlDataSource
+  application:
+    name: cainiaoshop-product
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  jackson:
+    date-format: yyyy-MM-dd hh:mm:ss
+
+mybatis-plus:
+
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+server:
+  port: 10000
+logging:
+  level:
+    com.alpha.cainiaoshop: debug
