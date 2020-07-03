@@ -46,8 +46,7 @@ spring.cloud.nacos.config.namespace=3bd05659-7e1b-4510-82a2-764a3634025d
 spring.cloud.nacos.config.server-addr=127.0.0.1:8848
 ```
 
-3.额外（如果maven添加了jdbc相关信息可以排除）![image-20200530135943705](/Users/guojun/Library/Application Support/typora-user-images/image-20200530135943705.png)
-
+3.额外（如果maven添加了jdbc相关信息可以排除）
 maven引入gateway,但是没有webstarter相关依赖，引入会报错（亲测）
 
 ```xml
