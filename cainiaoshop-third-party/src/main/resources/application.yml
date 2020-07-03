@@ -8,7 +8,7 @@ spring:
 
     alicloud:
       access-key: LTAI4G8LUsSbgzw5E2funWT3
-      secret-key: arZ8FsCiNFaqGjyIJX4IyhVRtudcoI
+      secret-key: 
       oss:
         endpoint: oss-cn-shanghai.aliyuncs.com
         bucket: cainiaoshop-product
